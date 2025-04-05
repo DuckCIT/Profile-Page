@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Duck CIT</title>
+    <link rel="icon" href="../img/icon.png" type="image/gif">
+    <script type="module" src="../js/sparkly-text.js" defer></script>
+    <script src="../js/star-bgr.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/translations.js" defer></script>
+    <script src="../js/modal.js" defer></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="hidden">
+    <canvas id="starsCanvas"></canvas>
+    <div class="content"style="padding-top: 60px;">
+        <div class="title">
+            <h1 id="privacyPolicyTitle">Privacy Policy</h1>
+        </div>
+        <div class="description">
+            <p id="privacyPolicyDesc">
+                At Duck CIT, I am committed to protecting your privacy. This Privacy Policy explains how I collect, use, and safeguard your information when you visit my website or use my services.
+                <br><br>
+                <strong>1. Information I Collect</strong><br>
+                I may collect personal information such as your name and email address when you submit a question via the contact form. Additionally, I may collect non-personal information like browser type, IP address, and usage data through cookies to improve your experience.
+                <br><br>
+                <strong>2. How I Use Your Information</strong><br>
+                Your information is used to respond to your inquiries, improve my website, and analyze usage patterns. I do not sell or share your personal information with third parties, except as required by law.
+                <br><br>
+                <strong>3. Cookies</strong><br>
+                This website uses cookies to enhance your browsing experience. You can disable cookies in your browser settings, but this may affect the functionality of the site.
+                <br><br>
+                <strong>4. Security</strong><br>
+                I take reasonable measures to protect your information from unauthorized access or disclosure. However, no method of transmission over the internet is 100% secure.
+                <br><br>
+                <strong>5. Changes to This Policy</strong><br>
+                I may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.
+                <br><br>
+                If you have any questions about this Privacy Policy, please contact me via the "Ask a Question" link in the footer.
+            </p>
+        </div>
+    </div>
+    <div class="fixed-header">
+        <div class="logo">
+            <a href="../">
+                <img src="https://media4.giphy.com/media/jShiHQS3wfj1UxHBX8/giphy.webp?cid=790b7611l7g04eaxjxkii5tkvzs93ffqo6eb0uzorecekipr&ep=v1_stickers_search&rid=giphy.webp&ct=s" alt="Duck" width="25">
+                <span>Duck CIT</span>
+            </a>
+        </div>
+        <button class="lang-toggle" id="langBtn">
+            <i class="fas fa-globe"></i>
+            <span id="lang">EN</span>
+            <i class="fas fa-spinner fa-spin" id="spinner" style="display: none;"></i>
+        </button>
+    </div>
+    <footer>
+        <hr>
+        <div class="footer-links">
+            <a href="../projects" id="myProjects">All My Projects</a>
+            <a id="privacyPolicy">Privacy Policy</a>
+            <a href="../terms-of-use" id="termsOfUse">Terms of Use</a>
+            <a onclick="showModalHandler()" id="askQuestion">Ask a Question</a>
+        </div>
+        <div class="footer-icons">
+            <a href="https://github.com/DuckCIT" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://facebook.com/tducxD" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+        <p id="copyright">© 2025 Duck CIT</p>
+        <!-- Modal Form -->
+        <div id="questionModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModal" class="close">×</span>
+                <h2 id="modalTitle">Ask a Question</h2>
+                <p id="modalDesc">Please fill in the information below. I will respond to you as soon as possible.</p>
+                <form id="questionForm">
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                    <textarea id="question" name="question" placeholder="Your question" rows="4" required></textarea>
+                    <button type="submit">Send question</button>
+                </form>     
+                <div id="loading" class="loading" style="display:none;">
+                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                </div>           
+            </div>
+        </div>
+        <div id="notification" class="notification hidden">
+            <span id="notificationMessage"></span>
+            <span id="closeNotification" class="close-notification">×</span>
+        </div>
+    </footer>
+</body>
+
+</html>
