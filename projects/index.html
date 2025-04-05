@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects - Duck CIT</title>
     <link rel="icon" href="../img/icon.png" type="image/gif">
+    <script src="../js/translations.js"></script>
+    <script src="../js/projects.js"></script>
     <script type="module" src="../js/sparkly-text.js" defer></script>
     <script src="../js/star-bgr.js" defer></script>
+    <script src="../js/router.js" defer></script>
     <script src="../js/main.js" defer></script>
-    <script src="../js/translations.js" defer></script>
     <script src="../js/modal.js" defer></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +22,8 @@
 
 <body class="hidden">
     <canvas id="starsCanvas"></canvas>
-    <div class="content" style="padding-top: 60px;">
-        <div class="title">
+    <div class="content">
+        <div class="title" style="margin-top: -40px;">
             <h1 id="projectsTitle">My Projects</h1>
         </div>
         <div class="projects-container">
@@ -36,7 +38,7 @@
     </div>
     <div class="fixed-header">
         <div class="logo">
-            <a href="../">
+            <a href="/">
                 <img src="../img/duck-cute.webp" alt="Duck" width="25">
                 <span>Duck CIT</span>
             </a>
@@ -50,9 +52,9 @@
     <footer>
         <hr>
         <div class="footer-links">
-            <a id="myProjects">All My Projects</a>
-            <a href='../privacy-policy' id="privacyPolicy">Privacy Policy</a>
-            <a href='../terms-of-use' id="termsOfUse">Terms of Use</a>
+            <a href="/projects" id="myProjects">All My Projects</a>
+            <a href="/privacy-policy" id="privacyPolicy">Privacy Policy</a>
+            <a href="/terms-of-use" id="termsOfUse">Terms of Use</a>
             <a onclick="showModalHandler()" id="askQuestion">Ask a Question</a>
         </div>
         <div class="footer-icons">
@@ -64,7 +66,7 @@
             </a>
         </div>
         <p id="copyright">© 2025 Duck CIT</p>
-        <!-- Modal Form -->
+
         <div id="questionModal" class="modal">
             <div class="modal-content">
                 <span id="closeModal" class="close">×</span>
@@ -86,7 +88,6 @@
             <span id="closeNotification" class="close-notification">×</span>
         </div>
     </footer>
-    <script src="../js/projects.js"></script>
 </body>
 
 </html> 

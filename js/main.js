@@ -1,8 +1,9 @@
-// Chờ tất cả tài nguyên tải xong
+// Initialize page visibility
 window.addEventListener('load', function () {
     document.body.classList.remove('hidden');
 });
 
+// Handle canvas resizing
 function resizeCanvas() {
     const canvas = document.querySelector("canvas");
     if (canvas) {
@@ -11,15 +12,13 @@ function resizeCanvas() {
     }
 }
 
-// Gọi ngay khi tải trang
 resizeCanvas();
-
-// Cập nhật khi thay đổi kích thước cửa sổ
 window.addEventListener("resize", resizeCanvas);
 
-// Lưu trạng thái tilt hiện tại
+// Tilt effect state management
 let tiltState = { rotateX: 0, rotateY: 0 };
 
+// Initialize tilt effect for profile card
 function initTiltEffect() {
     const card = document.querySelector(".glowing-border");
     if (!card) return;
@@ -34,7 +33,6 @@ function initTiltEffect() {
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 10px rgba(187, 185, 198, 0.3)`;
 
-        // Lưu trạng thái tilt hiện tại
         tiltState.rotateX = rotateX;
         tiltState.rotateY = rotateY;
 
@@ -74,10 +72,8 @@ function initTiltEffect() {
     updateTilt();
 }
 
-// Gọi lại mà không reset giá trị tilt
 window.addEventListener("resize", () => {
     requestAnimationFrame(initTiltEffect);
 });
 
-// Khởi động lần đầu
 document.addEventListener("DOMContentLoaded", initTiltEffect);

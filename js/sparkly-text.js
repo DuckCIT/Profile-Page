@@ -1,9 +1,11 @@
+// Sparkly text animation setup
 let sheet;
 let sparkleTemplate;
 
 const supportsConstructableStylesheets = "replaceSync" in CSSStyleSheet.prototype;
 const motionOK = window.matchMedia("(prefers-reduced-motion: no-preference)");
 
+// Custom element for sparkly text effect
 class SparklyText extends HTMLElement {
   #numberOfSparkles = 3;
   #sparkleSvg = `<svg fill="none" height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="m25.4457 43.9536c-.4589 1.3952-2.4325 1.3952-2.8914 0l-2.6595-8.0867c-1.208-3.6729-4.0888-6.5537-7.7617-7.7617l-8.08672-2.6595c-1.39517-.4589-1.39517-2.4325 0-2.8914l8.08672-2.6595c3.6729-1.208 6.5537-4.0888 7.7617-7.7617l2.6595-8.08672c.4589-1.39517 2.4325-1.39517 2.8914 0l2.6595 8.08672c1.208 3.6729 4.0888 6.5537 7.7617 7.7617l8.0867 2.6595c1.3952.4589 1.3952 2.4325 0 2.8914l-8.0867 2.6595c-3.6729 1.208-6.5537 4.0888-7.7617 7.7617z"/></svg>`;
@@ -36,12 +38,14 @@ class SparklyText extends HTMLElement {
     }
   `;
 
+  // Register custom element
   static register() {
     if ("customElements" in window) {
       window.customElements.define("sparkly-text", SparklyText);
     }
   }
 
+  // Generate and apply CSS styles
   generateCss() {
     if (!sheet) {
       if (supportsConstructableStylesheets) {
@@ -60,6 +64,7 @@ class SparklyText extends HTMLElement {
     }
   }
 
+  // Initialize component
   connectedCallback() {
     const needsSparkles = motionOK.matches || !this.shadowRoot;
 
@@ -84,9 +89,10 @@ class SparklyText extends HTMLElement {
     motionOK.addEventListener("change", this.motionOkChange);
     window.addEventListener("popstate", this.handleNavigation);
     window.addEventListener("pageshow", this.handlePageShow);
-    this.setupObservers(); // Thêm observer và visibility
+    this.setupObservers();
   }
 
+  // Clean up event listeners
   disconnectedCallback() {
     motionOK.removeEventListener("change", this.motionOkChange);
     window.removeEventListener("popstate", this.handleNavigation);
@@ -94,6 +100,7 @@ class SparklyText extends HTMLElement {
     document.removeEventListener("visibilitychange", this.handleVisibilityChange);
   }
 
+  // Handle navigation events
   handleNavigation = () => {
     if (motionOK.matches && !document.hidden && this.#isVisible) {
       this.resumeSparkles();
@@ -102,6 +109,7 @@ class SparklyText extends HTMLElement {
     }
   };
 
+  // Handle page show events
   handlePageShow = (event) => {
     if (event.persisted && motionOK.matches && !document.hidden && this.#isVisible) {
       this.resumeSparkles();
@@ -110,20 +118,23 @@ class SparklyText extends HTMLElement {
     }
   };
 
+  // Pause sparkle animations
   pauseSparkles() {
     const sparkles = this.shadowRoot.querySelectorAll('svg');
     sparkles.forEach(sparkle => {
-      sparkle.style.animationPlayState = 'paused'; // Đóng băng animation
+      sparkle.style.animationPlayState = 'paused';
     });
   }
 
+  // Resume sparkle animations
   resumeSparkles() {
     const sparkles = this.shadowRoot.querySelectorAll('svg');
     sparkles.forEach(sparkle => {
-      sparkle.style.animationPlayState = 'running'; // Tiếp tục animation
+      sparkle.style.animationPlayState = 'running';
     });
   }
 
+  // Handle motion preference changes
   motionOkChange = () => {
     if (motionOK.matches && !document.hidden && this.#isVisible) {
       this.addSparkles();
@@ -132,7 +143,7 @@ class SparklyText extends HTMLElement {
     }
   };
 
-  // Thiết lập observer và visibility
+  // Setup visibility observers
   #isVisible = false;
   setupObservers() {
     const observer = new IntersectionObserver((entries) => {
@@ -148,6 +159,7 @@ class SparklyText extends HTMLElement {
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
   }
 
+  // Handle visibility changes
   handleVisibilityChange = () => {
     if (!document.hidden && this.#isVisible && motionOK.matches) {
       this.resumeSparkles();
@@ -156,10 +168,11 @@ class SparklyText extends HTMLElement {
     }
   };
 
+  // Add sparkles to text
   addSparkles() {
     for (let i = 0; i < this.#numberOfSparkles; i++) {
       setTimeout(() => {
-        if (!document.hidden && this.#isVisible) { // Kiểm tra tab và viewport
+        if (!document.hidden && this.#isVisible) {
           this.addSparkle(sparkle => {
             sparkle.style.top = `calc(${Math.random() * 110 - 5}% - var(--_sparkle-base-size) / 2)`;
             sparkle.style.left = `calc(${Math.random() * 110 - 5}% - var(--_sparkle-base-size) / 2)`;
@@ -169,6 +182,7 @@ class SparklyText extends HTMLElement {
     }
   }
 
+  // Create and add individual sparkle
   addSparkle(update) {
     if (!sparkleTemplate) {
       const span = document.createElement("span");

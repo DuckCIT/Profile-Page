@@ -1,8 +1,10 @@
+// Star background animation setup
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 const stars = [];
 const starCount = 200;
 
+// Handle canvas resizing
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -14,6 +16,7 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
+// Star class for individual star properties and behavior
 class Star {
     constructor() {
         this.posX = Math.random() * 100;
@@ -53,15 +56,18 @@ class Star {
     }
 }
 
+// Create stars
 for (let i = 0; i < starCount; i++) {
     stars.push(new Star());
 }
 
+// Animation control variables
 let lastTime = 0;
 const fps = 60;
 let animationFrameId;
 let isActive = true;
 
+// Main animation loop
 function animate(timestamp) {
     if (isActive) {
         if (timestamp - lastTime >= 1000 / fps) {
@@ -76,11 +82,11 @@ function animate(timestamp) {
     animationFrameId = requestAnimationFrame(animate);
 }
 
-// Dùng IntersectionObserver để dừng animation khi canvas không trong viewport
+// Performance optimization with IntersectionObserver
 const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting && !document.hidden) {
         if (!isActive) {
-            lastTime = performance.now(); // Reset thời gian khi tiếp tục
+            lastTime = performance.now();
         }
         isActive = true;
     } else {
@@ -90,12 +96,10 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(canvas);
 
-// Dừng animation khi tab không hoạt động
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-        observer.observe(canvas); // Kiểm tra lại trạng thái canvas khi quay lại
+        observer.observe(canvas);
     }
 });
 
-// Khởi động animation
 animate(performance.now());

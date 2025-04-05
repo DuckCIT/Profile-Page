@@ -10,6 +10,7 @@
     <link rel="icon" href="img/icon.png" type="image/gif">
     <script type="module" src="js/sparkly-text.js" defer></script>
     <script src="js/star-bgr.js" defer></script>
+    <script src="js/router.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/translations.js" defer></script>
     <script src="js/modal.js" defer></script>
@@ -82,12 +83,12 @@
             <p class="pricing-note" id="pricingNote">* If you'd like to show some love, a $1 donation would make my day
                 (but no pressure, really).</p>
         </section>
-
     </div>
 
+    <!-- Header with language toggle -->
     <div class="fixed-header">
         <div class="logo">
-            <a href="#">
+            <a href="/">
                 <img src="img/duck-cute.webp" alt="Duck" width="25">
                 <span>Duck CIT</span>
             </a>
@@ -98,12 +99,14 @@
             <i class="fas fa-spinner fa-spin" id="spinner" style="display: none;"></i>
         </button>
     </div>
+
+    <!-- Footer with navigation and social links -->
     <footer>
         <hr>
         <div class="footer-links">
-            <a href="projects" id="myProjects">All My Projects</a>
-            <a href='privacy-policy' id="privacyPolicy">Privacy Policy</a>
-            <a href='terms-of-use' id="termsOfUse">Terms of Use</a>
+            <a href="/projects" id="myProjects">All My Projects</a>
+            <a href="/privacy-policy" id="privacyPolicy">Privacy Policy</a>
+            <a href="/terms-of-use" id="termsOfUse">Terms of Use</a>
             <a onclick="showModalHandler()" id="askQuestion">Ask a Question</a>
         </div>
         <div class="footer-icons">
@@ -115,7 +118,8 @@
             </a>
         </div>
         <p id="copyright">© 2025 Duck CIT</p>
-        <!-- Modal Donation (Tách biệt với Modal cũ) -->
+
+        <!-- Donation modal -->
         <div id="donateModal" class="modal donate-modal">
             <div class="modal-content donate-modal-content">
                 <span id="closeDonateModal" class="close">×</span>
@@ -123,10 +127,14 @@
                     <img src="img/scanMe.png" alt="QR Code">
                     <p>NGUYEN TRONG DUC</p>
                     <p>BIDV - 8830619257</p>
+                    <a href="https://www.buymeacoffee.com/duckcitvn" target="_blank" class="coffee-button">
+                        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 160px !important; margin-top: 5px;">
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- Modal Form -->
+
+        <!-- Question form modal -->
         <div id="questionModal" class="modal">
             <div class="modal-content">
                 <span id="closeModal" class="close">×</span>
@@ -143,6 +151,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Notification system -->
         <div id="notification" class="notification hidden">
             <span id="notificationMessage"></span>
             <span id="closeNotification" class="close-notification">×</span>

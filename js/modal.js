@@ -1,21 +1,21 @@
-// Hàm mở modal với hiệu ứng scale
+// Question modal handlers
 function showModalHandler() {
     const modal = document.getElementById('questionModal');
     modal.style.display = 'flex';
     setTimeout(() => {
-        modal.classList.add('active'); // Thêm class active để kích hoạt hiệu ứng
-    }, 10); // Delay nhỏ để transition hoạt động
+        modal.classList.add('active');
+    }, 10);
 }
 
-// Hàm đóng modal với hiệu ứng scale
 function closeModalHandler() {
     const modal = document.getElementById('questionModal');
-    modal.classList.remove('active'); // Xóa class active để thu nhỏ
+    modal.classList.remove('active');
     setTimeout(() => {
-        modal.style.display = 'none'; // Ẩn sau khi hiệu ứng hoàn tất
-    }, 300); // Thời gian khớp với transition (0.3s)
+        modal.style.display = 'none';
+    }, 300);
 }
 
+// Initialize question modal and form handling
 function initModal() {
     const askQuestionLink = document.getElementById('askQuestion');
     const questionModal = document.getElementById('questionModal');
@@ -23,23 +23,17 @@ function initModal() {
     const questionForm = document.getElementById('questionForm');
     const loading = document.getElementById('loading');
 
-    if (!askQuestionLink || !questionModal || !closeModal || !questionForm || !loading) {
-        console.error("Thiếu phần tử DOM cần thiết cho modal!");
-        return;
-    }
+    if (!askQuestionLink || !questionModal || !closeModal || !questionForm || !loading) return;
 
-    // Gắn sự kiện mở modal
     askQuestionLink.addEventListener('click', (e) => {
         e.preventDefault();
         showModalHandler();
     });
 
-    // Gắn sự kiện đóng modal
     closeModal.addEventListener('click', closeModalHandler);
 
     questionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
         loading.style.display = 'flex';
 
         const notification = document.getElementById('notification');
@@ -97,51 +91,44 @@ function initModal() {
 
 document.addEventListener('DOMContentLoaded', initModal);
 
-// Hàm mở modal
+// Donate modal handlers
 function openDonateModal() {
     const modal = document.getElementById("donateModal");
     if (modal) {
         modal.style.display = "flex";
         setTimeout(() => {
-            modal.classList.add("active"); // Thêm class active để kích hoạt hiệu ứng
-        }, 10); // Delay nhỏ để transition hoạt động
+            modal.classList.add("active");
+        }, 10);
     }
 }
 
-// Hàm đóng modal
 function closeDonateModal() {
     const modal = document.getElementById("donateModal");
     if (modal) {
-        modal.classList.remove("active"); // Xóa class active để thu nhỏ
+        modal.classList.remove("active");
         setTimeout(() => {
-            modal.style.display = "none"; // Ẩn sau khi hiệu ứng hoàn tất
-        }, 300); // Thời gian khớp với transition (0.3s)
+            modal.style.display = "none";
+        }, 300);
     }
 }
 
-// Hàm khởi tạo modal
+// Initialize donate modal
 function initDonateModal() {
     const donateButton = document.getElementById("donate");
     const closeDonateModalBtn = document.getElementById("closeDonateModal");
     const donateModal = document.getElementById("donateModal");
 
-    // Kiểm tra sự tồn tại của các phần tử, nếu thiếu thì bỏ qua
-    if (!donateButton || !closeDonateModalBtn || !donateModal) {
-        return;
-    }
+    if (!donateButton || !closeDonateModalBtn || !donateModal) return;
 
-    // Gắn sự kiện cho nút Donate
     donateButton.addEventListener("click", function(e) {
         e.preventDefault();
         openDonateModal();
     });
 
-    // Gắn sự kiện cho nút đóng
     closeDonateModalBtn.addEventListener("click", function() {
         closeDonateModal();
     });
 
-    // Đóng khi nhấn bên ngoài modal
     donateModal.addEventListener("click", function(e) {
         if (e.target === this) {
             closeDonateModal();
@@ -149,7 +136,6 @@ function initDonateModal() {
     });
 }
 
-// Chạy khi DOM đã sẵn sàng
 document.addEventListener("DOMContentLoaded", function() {
     initDonateModal();
 });

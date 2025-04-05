@@ -1,3 +1,4 @@
+// Translation strings for English and Vietnamese
 const translations = {
     en: {
         who: "Who I Am",
@@ -149,8 +150,10 @@ const translations = {
     }
 };
 
-let currentLang = 'en';
+// Language management
+let currentLang = localStorage.getItem('currentLang') || 'en';
 
+// Update page content with selected language
 function updateContent(lang) {
     const translatableIds = [
         'who', 'desc', 'project', 'subtitle', 'donate', 'openSource',
@@ -174,7 +177,6 @@ function updateContent(lang) {
         pricingPrice.textContent = translations[lang].pricingPrice;
     }
 
-    // Cập nhật nội dung modal
     const modalTitle = document.getElementById('modalTitle');
     if (modalTitle) {
         document.getElementById('modalTitle').textContent = translations[lang].modalTitle;
@@ -184,32 +186,46 @@ function updateContent(lang) {
         document.getElementById('question').placeholder = translations[lang].questionPlaceholder;
         document.getElementById('questionForm').querySelector('button').textContent = translations[lang].submitButton;
     }
-}
 
-function initTranslations() {
-    const langBtn = document.getElementById('langBtn');
-    const lang = document.getElementById('lang');
-    const spinner = document.getElementById('spinner');
-
-    if (!langBtn || !lang || !spinner) {
-        console.error("Thiếu phần tử DOM cần thiết!");
-        return;
+    const langIndicator = document.getElementById('lang');
+    if (langIndicator) {
+        langIndicator.textContent = lang.toUpperCase();
     }
 
-    updateContent(currentLang);
+    if (window.location.pathname === '/projects' && typeof window.loadProjects === 'function') {
+        window.loadProjects();
+    }
 
-    langBtn.addEventListener('click', () => {
-        currentLang = currentLang === 'en' ? 'vi' : 'en';
-        lang.style.display = 'none';
-        spinner.style.display = 'inline-block';
-
-        setTimeout(() => {
-            updateContent(currentLang);
-            lang.textContent = currentLang.toUpperCase();
-            lang.style.display = 'inline';
-            spinner.style.display = 'none';
-        }, 500);
-    });
+    const loadingText = document.getElementById('projectsLoading');
+    if (loadingText) {
+        loadingText.textContent = translations[lang].projectsLoading;
+    }
 }
 
-initTranslations(); // Khởi tạo dịch thuật khi DOM đã tải xong
+// Language toggle event handler
+document.addEventListener('click', (e) => {
+    if (e.target.closest('#langBtn')) {
+        const spinner = document.getElementById('spinner');
+        const lang = document.getElementById('lang');
+        
+        if (spinner && lang) {
+            spinner.style.display = 'inline-block';
+            lang.style.display = 'none';
+
+            setTimeout(() => {
+                currentLang = currentLang === 'en' ? 'vi' : 'en';
+                localStorage.setItem('currentLang', currentLang);
+                
+                updateContent(currentLang);
+                
+                spinner.style.display = 'none';
+                lang.style.display = 'inline-block';
+            }, 500);
+        }
+    }
+});
+
+// Initialize translations
+document.addEventListener('DOMContentLoaded', () => {
+    updateContent(currentLang);
+});

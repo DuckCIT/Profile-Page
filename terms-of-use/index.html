@@ -8,6 +8,7 @@
     <link rel="icon" href="../img/icon.png" type="image/gif">
     <script type="module" src="../js/sparkly-text.js" defer></script>
     <script src="../js/star-bgr.js" defer></script>
+    <script src="../js/router.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/translations.js" defer></script>
     <script src="../js/modal.js" defer></script>
@@ -20,8 +21,8 @@
 
 <body class="hidden">
     <canvas id="starsCanvas"></canvas>
-    <div class="content" style="padding-top: 60px;">
-        <div class="title">
+    <div class="content">
+        <div class="title" style="margin-top: -40px;">
             <h1 id="termsOfUseTitle">Terms of Use</h1>
         </div>
         <div class="description">
@@ -49,8 +50,8 @@
     </div>
     <div class="fixed-header">
         <div class="logo">
-            <a href="../">
-                <img src="https://media4.giphy.com/media/jShiHQS3wfj1UxHBX8/giphy.webp?cid=790b7611l7g04eaxjxkii5tkvzs93ffqo6eb0uzorecekipr&ep=v1_stickers_search&rid=giphy.webp&ct=s" alt="Duck" width="25">
+            <a href="/">
+                <img src="../img/duck-cute.webp" alt="Duck" width="25">
                 <span>Duck CIT</span>
             </a>
         </div>
@@ -63,9 +64,9 @@
     <footer>
         <hr>
         <div class="footer-links">
-            <a href="../projects" id="myProjects">All My Projects</a>
-            <a href='../privacy-policy' id="privacyPolicy">Privacy Policy</a>
-            <a id="termsOfUse">Terms of Use</a>
+            <a href="/projects" id="myProjects">All My Projects</a>
+            <a href="/privacy-policy" id="privacyPolicy">Privacy Policy</a>
+            <a href="/terms-of-use" id="termsOfUse">Terms of Use</a>
             <a onclick="showModalHandler()" id="askQuestion">Ask a Question</a>
         </div>
         <div class="footer-icons">
@@ -77,7 +78,7 @@
             </a>
         </div>
         <p id="copyright">© 2025 Duck CIT</p>
-        <!-- Modal Form -->
+
         <div id="questionModal" class="modal">
             <div class="modal-content">
                 <span id="closeModal" class="close">×</span>
