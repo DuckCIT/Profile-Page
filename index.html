@@ -143,10 +143,12 @@
                 <form id="questionForm">
                     <input type="text" id="name" name="name" placeholder="Your name" required>
                     <input type="email" id="email" name="email" placeholder="Your email" required>
-                    <textarea id="question" name="question" placeholder="Your question" rows="4" required></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="question" name="question" placeholder="Your question" rows="4" required></textarea>
+                    </div>
                     <button type="submit">Send question</button>
                 </form>
-                <div id="loading" class="loading" style="display:none;">
+                <div id="loading" class="loading" style="display:none; margin-top: 0px;">
                     <i class="fas fa-spinner fa-spin"></i> Loading...
                 </div>
             </div>
