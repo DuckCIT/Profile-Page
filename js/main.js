@@ -17,11 +17,17 @@ window.addEventListener("resize", resizeCanvas);
 
 // Tilt effect state management
 let tiltState = { rotateX: 0, rotateY: 0 };
+let tiltAnimationFrame = null;
 
 // Initialize tilt effect for profile card
 function initTiltEffect() {
     const card = document.querySelector(".glowing-border");
     if (!card) return;
+
+    // Cancel any existing animation frame
+    if (tiltAnimationFrame) {
+        cancelAnimationFrame(tiltAnimationFrame);
+    }
 
     let rotateX = tiltState.rotateX, rotateY = tiltState.rotateY;
     let targetX = rotateX, targetY = rotateY;
@@ -36,7 +42,7 @@ function initTiltEffect() {
         tiltState.rotateX = rotateX;
         tiltState.rotateY = rotateY;
 
-        requestAnimationFrame(updateTilt);
+        tiltAnimationFrame = requestAnimationFrame(updateTilt);
     }
 
     if (!isMobile) {
@@ -72,8 +78,30 @@ function initTiltEffect() {
     updateTilt();
 }
 
+// Initialize tilt effect on page load
+document.addEventListener("DOMContentLoaded", () => {
+    initTiltEffect();
+    
+    // Set up MutationObserver to detect DOM changes
+    if (!window.tiltObserver) {
+        window.tiltObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length || mutation.removedNodes.length) {
+                    // Small delay to ensure DOM is fully updated
+                    setTimeout(initTiltEffect, 100);
+                }
+            });
+        });
+
+        // Start observing the document body for changes
+        window.tiltObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+});
+
+// Handle window resize
 window.addEventListener("resize", () => {
     requestAnimationFrame(initTiltEffect);
 });
-
-document.addEventListener("DOMContentLoaded", initTiltEffect);

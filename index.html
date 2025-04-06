@@ -26,7 +26,7 @@
 <body class="hidden">
     <canvas id="starsCanvas"></canvas>
     <div class="content">
-        <img src="img/capoo-work.webp" alt="Duck CIT" width="100">
+        <img src="img/capoo-work.webp" alt="Duck CIT" width="100" id="capooImage">
         <h1>
             <sparkly-text number-of-sparkles="10">
                 <span class="gradient-text">Duck CIT</span>
@@ -34,8 +34,8 @@
         </h1>
         <p class="sub-title" id="subtitle">A Passionate Self-Taught Coder</p>
         <div class="button-container">
-            <a class="sparkle-button rainbow" id="donate">
-                <i class="fas fa-donate"></i> Donate to power up!
+            <a class="sparkle-button rainbow" id="askQuestion">
+                <i class="fas fa-question"></i> Let's Connect
             </a>
             <div class="rainbow-reflection"></div>
         </div>
@@ -104,10 +104,10 @@
     <footer>
         <hr>
         <div class="footer-links">
-            <a href="/projects" id="myProjects">All My Projects</a>
+            <a href="/projects" id="myProjects">My Projects</a>
             <a href="/privacy-policy" id="privacyPolicy">Privacy Policy</a>
             <a href="/terms-of-use" id="termsOfUse">Terms of Use</a>
-            <a onclick="showModalHandler()" id="askQuestion">Ask a Question</a>
+            <a onclick="openDonateModal()" id="donate">Support Me</a>
         </div>
         <div class="footer-icons">
             <a href="https://github.com/DuckCIT" target="_blank">

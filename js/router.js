@@ -58,6 +58,15 @@ class Router {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             
+            // Update title based on the current path
+            const titles = {
+                '/': 'Duck CIT',
+                '/projects': 'My Projects - Duck CIT',
+                '/privacy-policy': 'Privacy Policy - Duck CIT',
+                '/terms-of-use': 'Terms of Use - Duck CIT'
+            };
+            document.title = titles[path] || 'Duck CIT';
+            
             // Update content
             const newContent = doc.querySelector('.content');
             if (newContent) {

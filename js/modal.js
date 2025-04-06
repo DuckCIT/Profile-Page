@@ -17,15 +17,15 @@ function closeModalHandler() {
 
 // Initialize question modal and form handling
 function initModal() {
-    const askQuestionLink = document.getElementById('askQuestion');
+    const askQuestionButton = document.getElementById('askQuestion');
     const questionModal = document.getElementById('questionModal');
     const closeModal = document.getElementById('closeModal');
     const questionForm = document.getElementById('questionForm');
     const loading = document.getElementById('loading');
 
-    if (!askQuestionLink || !questionModal || !closeModal || !questionForm || !loading) return;
+    if (!askQuestionButton || !questionModal || !closeModal || !questionForm || !loading) return;
 
-    askQuestionLink.addEventListener('click', (e) => {
+    askQuestionButton.addEventListener('click', (e) => {
         e.preventDefault();
         showModalHandler();
     });
@@ -114,13 +114,13 @@ function closeDonateModal() {
 
 // Initialize donate modal
 function initDonateModal() {
-    const donateButton = document.getElementById("donate");
+    const donateLink = document.getElementById("donate");
     const closeDonateModalBtn = document.getElementById("closeDonateModal");
     const donateModal = document.getElementById("donateModal");
 
-    if (!donateButton || !closeDonateModalBtn || !donateModal) return;
+    if (!donateLink || !closeDonateModalBtn || !donateModal) return;
 
-    donateButton.addEventListener("click", function(e) {
+    donateLink.addEventListener("click", function(e) {
         e.preventDefault();
         openDonateModal();
     });

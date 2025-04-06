@@ -152,6 +152,8 @@ canvas {
     border-radius: 20px;
     padding: 8px 12px;
     font-size: 12px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -282,7 +284,7 @@ canvas {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%) scaleX(0.7);
-    width: 290px;
+    width: 220px;
     height: 15px;
     background: linear-gradient(
         90deg,
@@ -838,7 +840,7 @@ footer p {
     }
 
     .rainbow-reflection {
-        width: 220px;
+        width: 200px;
         height: 10px;
     }
 
@@ -901,3 +903,4 @@ footer p {
         font-size: 0.8rem;
     }
 }
+

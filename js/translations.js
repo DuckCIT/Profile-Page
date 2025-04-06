@@ -5,9 +5,9 @@ const translations = {
         desc: "I'm Nguyen Trong Duc - a <strong>software engineering student</strong> with a relentless curiosity for <strong>coding, problem-solving, and system exploration</strong>. From algorithm competitions to deep-diving into the mechanics of software, I thrive on understanding how things work beneath the surface.",
         project: "Top Project",
         subtitle: "A Passionate Self-Taught Coder",
-        donate: "Donate to power up!",
+        donate: "Support Me",
         openSource: "An open source extension",
-        myProjects: "All My Projects",
+        myProjects: "My Projects",
         privacyPolicy: "Privacy Policy",
         privacyPolicyTitle: "Privacy Policy",
         privacyPolicyDesc: `
@@ -52,10 +52,10 @@ const translations = {
             <br><br>
             If you have any questions about these Terms of Use, please contact me via the "Ask a Question" link in the footer.
         `,
-        askQuestion: "Ask a Question",
+        askQuestion: "Let's Connect",
         copyright: "© 2025 Duck CIT",
-        modalTitle: "Ask a Question",
-        modalDesc: "Please fill in the information below. I will respond to you as soon as possible.",
+        modalTitle: "Let's Connect",
+        modalDesc: "I'd love to hear from you! Whether you have a question, want to collaborate, or just want to say hello, feel free to reach out. I'll get back to you as soon as possible.",
         namePlaceholder: "Your name",
         emailPlaceholder: "Your email",
         questionPlaceholder: "Your question",
@@ -79,9 +79,9 @@ const translations = {
         desc: "Tôi là Nguyễn Trọng Đức - một <strong>sinh viên kỹ thuật phần mềm</strong> mê code, thích giải quyết vấn đề và luôn tò mò muốn khám phá sâu vào các hệ thống. Từ việc tham gia thi đấu thuật toán đến mày mò tìm hiểu cách phần mềm vận hành, tôi thích thú với việc hiểu rõ mọi thứ hoạt động ra sao bên trong chúng.",
         project: "Dự Án Tiêu Biểu",
         subtitle: "Một Lập Trình Viên Tự Học Đầy Đam Mê",
-        donate: "Tiếp thêm năng lượng!",
+        donate: "Ủng Hộ Tôi",
         openSource: "Một tiện ích mã nguồn mở",
-        myProjects: "Tất Cả Dự Án Của Tôi",
+        myProjects: "Dự Án Của Tôi",
         privacyPolicy: "Chính sách Quyền Riêng tư",
         privacyPolicyTitle: "Chính sách Quyền Riêng tư",
         privacyPolicyDesc: `
@@ -126,10 +126,10 @@ const translations = {
             <br><br>
             Nếu bạn có bất kỳ câu hỏi nào về Điều khoản Sử dụng này, vui lòng liên hệ với tôi qua liên kết "Gửi Câu Hỏi" ở footer.
         `,
-        askQuestion: "Gửi Câu Hỏi",
+        askQuestion: "Liên Hệ Với Tôi",
         copyright: "© 2025 Duck CIT",
-        modalTitle: "Gửi Câu Hỏi",
-        modalDesc: "Vui lòng điền thông tin bên dưới. Tôi sẽ trả lời bạn sớm nhất có thể.",
+        modalTitle: "Liên Hệ Với Tôi",
+        modalDesc: "Tôi rất mong được nghe từ bạn! Dù bạn có câu hỏi, muốn hợp tác hay chỉ đơn giản muốn chào hỏi, hãy cứ liên hệ. Tôi sẽ phản hồi bạn sớm nhất có thể.",
         namePlaceholder: "Tên của bạn",
         emailPlaceholder: "Email của bạn",
         questionPlaceholder: "Câu hỏi của bạn",
@@ -166,7 +166,7 @@ function updateContent(lang) {
     translatableIds.forEach(id => {
         const element = document.getElementById(id);
         if (element) {
-            element.innerHTML = id === 'donate' ? `<i class="fas fa-donate"></i> ${translations[lang][id]}` : translations[lang][id];
+            element.innerHTML = id === 'askQuestion' ? `<i class="fas fa-question-circle"></i> ${translations[lang][id]}` : translations[lang][id];
         }
     });
 
