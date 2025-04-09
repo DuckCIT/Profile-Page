@@ -14,6 +14,7 @@
     <script src="js/main.js" defer></script>
     <script src="js/translations.js" defer></script>
     <script src="js/modal.js" defer></script>
+    <script src="js/food-random.js" defer></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,62 +27,49 @@
 <body class="hidden">
     <canvas id="starsCanvas"></canvas>
     <div class="content">
-        <img src="img/capoo-work.webp" alt="Duck CIT" width="100" id="capooImage">
+        <div class="image-wrapper">
+            <div class="note-bubble"><span class="emoji"></span></div>
+            <img src="img/capoo-work.webp" alt="Duck CIT" id="capooImage">
+            <input type="text" id="dropZone">
+        </div>
         <h1>
             <sparkly-text number-of-sparkles="10">
                 <span class="gradient-text">Duck CIT</span>
             </sparkly-text>
         </h1>
-        <p class="sub-title" id="subtitle">A Passionate Self-Taught Coder</p>
+        <p class="sub-title" id="subtitle"></p>
         <div class="button-container">
             <a class="sparkle-button rainbow" id="askQuestion">
-                <i class="fas fa-question"></i> Let's Connect
+                <i class="fas fa-question"></i>
             </a>
             <div class="rainbow-reflection"></div>
         </div>
         <div class="title">
-            <h1 id="who">Who I Am</h1>
+            <h1 id="who"></h1>
         </div>
         <div class="description">
-            <p id="desc">
-                I'm Nguyen Trong Duc - a <strong>software engineering student</strong> with a relentless curiosity for
-                <strong>coding, problem-solving, and system exploration</strong>.
-                From algorithm competitions to deep-diving into the mechanics of software, I thrive on understanding how
-                things work beneath the surface.
-                <br><br>
-                I enjoy building <strong>automation tools, optimizing workflows, and developing practical
-                    solutions</strong> that make life easier.
-                At times, this curiosity has led me into unconventional territories - digging into software internals,
-                reverse engineering, and understanding the intricate layers of security and game mechanics.
-                It's not just about breaking things down but also about <strong>learning, innovating, and pushing
-                    boundaries</strong>.
-                <br><br>
-                Beyond coding, I continuously explore new technologies, refine my skills, and challenge myself with
-                complex problems.
-                I believe that every system has an optimal way to function - you just have to find it.
-            </p>
+            <p id="desc"></p>
         </div>
         <div class="title">
-            <h1 id="project">Top Project</h1>
+            <h1 id="project"></h1>
         </div>
-        <p class="sub-title" id="openSource">An open source extension</p>
+        <p class="sub-title" id="openSource"></p>
         <div class="glowing-border">
             <div class="overlay">
-                <a href="https://github.com/DuckCIT/AllReacts-for-Facebook-Stories/" target="_blank"><img
-                        src="img/allreacts.png" alt="Duck CIT"></a>
+                <a href="https://github.com/DuckCIT/AllReacts-for-Facebook-Stories/" target="_blank">
+                    <div class="overlay-text">Loading...</div>
+                    <img src="img/allreacts.png"></a>
             </div>
         </div>
         <section class="pricing-section" id="pricingSection">
-            <h1 class="pricing-title" id="pricingTitle">Pricing</h1>
-            <p class="pricing-subtitle" id="pricingSubtitle">Unlock access to all of my creative projects</p>
+            <h1 class="pricing-title" id="pricingTitle"></h1>
+            <p class="pricing-subtitle" id="pricingSubtitle"></p>
             <div class="pricing-amount" id="pricingAmount">
                 <span class="currency" id="pricingCurrency">$</span>
                 <span class="price" id="pricingPrice">0</span>
             </div>
-            <p class="pricing-description" id="pricingDescription">Completely free, now and forever - including all
-                future updates</p>
-            <p class="pricing-note" id="pricingNote">* If you'd like to show some love, a $1 donation would make my day
-                (but no pressure, really).</p>
+            <p class="pricing-description" id="pricingDescription"></p>
+            <p class="pricing-note" id="pricingNote"></p>
         </section>
     </div>
 
@@ -104,10 +92,10 @@
     <footer>
         <hr>
         <div class="footer-links">
-            <a href="/projects" id="myProjects">My Projects</a>
-            <a href="/privacy-policy" id="privacyPolicy">Privacy Policy</a>
-            <a href="/terms-of-use" id="termsOfUse">Terms of Use</a>
-            <a onclick="openDonateModal()" id="donate">Support Me</a>
+            <a href="/projects" id="myProjects"></a>
+            <a href="/privacy-policy" id="privacyPolicy"></a>
+            <a href="/terms-of-use" id="termsOfUse"></a>
+            <a onclick="openDonateModal()" id="donate"></a>
         </div>
         <div class="footer-icons">
             <a href="https://github.com/DuckCIT" target="_blank">
@@ -138,15 +126,15 @@
         <div id="questionModal" class="modal">
             <div class="modal-content">
                 <span id="closeModal" class="close">×</span>
-                <h2 id="modalTitle">Ask a Question</h2>
-                <p id="modalDesc">Please fill in the information below. I will respond to you as soon as possible.</p>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
                 <form id="questionForm">
                     <input type="text" id="name" name="name" placeholder="Your name" required>
                     <input type="email" id="email" name="email" placeholder="Your email" required>
                     <div class="textarea-wrapper">
                         <textarea id="question" name="question" placeholder="Your question" rows="4" required></textarea>
                     </div>
-                    <button type="submit">Send question</button>
+                    <button type="submit">Submit</button>
                 </form>
                 <div id="loading" class="loading" style="display:none; margin-top: 0px;">
                     <i class="fas fa-spinner fa-spin"></i> Loading...
@@ -161,5 +149,4 @@
         </div>
     </footer>
 </body>
-
 </html>
