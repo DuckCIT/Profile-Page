@@ -72,7 +72,13 @@ const translations = {
         noDescription: "No description available",
         viewOnGitHub: "View on GitHub",
         stars: "stars",
-        forks: "forks"
+        forks: "forks",
+        donateModalTitle: "Scan QR Code",
+        donateModalDesc: "Scan QR code to donate",
+        donateInstruction: "or enter account number",
+        donateCopyTooltip: "Copied!",
+        donateCoffeeTooltip: "Buy me a coffee ☕",
+        donateCloseButton: "Close"
     },
     vi: {
         who: "Tôi Là Ai",
@@ -146,7 +152,13 @@ const translations = {
         noDescription: "Không có mô tả",
         viewOnGitHub: "Xem trên GitHub",
         stars: "sao",
-        forks: "nhánh"
+        forks: "nhánh",
+        donateModalTitle: "Quét mã QR",
+        donateModalDesc: "Quét mã QR để ủng hộ",
+        donateInstruction: "hoặc nhập số tài khoản",
+        donateCopyTooltip: "Đã sao chép!",
+        donateCoffeeTooltip: "Mua cho mình một ly cà phê ☕",
+        donateCloseButton: "Đóng"
     }
 };
 
@@ -185,6 +197,18 @@ function updateContent(lang) {
         document.getElementById('email').placeholder = translations[lang].emailPlaceholder;
         document.getElementById('question').placeholder = translations[lang].questionPlaceholder;
         document.getElementById('questionForm').querySelector('button').textContent = translations[lang].submitButton;
+    }
+
+    // Update Donate Modal content
+    const donateModal = document.getElementById('donateModal');
+    if (donateModal) {
+        donateModal.querySelector('h2').textContent = translations[lang].donateModalTitle;
+        donateModal.querySelector('p').textContent = translations[lang].donateModalDesc;
+        donateModal.querySelector('.donate-instruction').textContent = translations[lang].donateInstruction;
+        donateModal.querySelector('.donate-btn-close').textContent = translations[lang].donateCloseButton;
+        const tooltips = donateModal.querySelectorAll('.donate-tooltip');
+        tooltips[0].textContent = translations[lang].donateCopyTooltip;
+        tooltips[1].textContent = translations[lang].donateCoffeeTooltip;
     }
 
     const langIndicator = document.getElementById('lang');

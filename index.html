@@ -18,9 +18,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -107,18 +105,35 @@
         </div>
         <p id="copyright">© 2025 Duck CIT</p>
 
-        <!-- Donation modal -->
-        <div id="donateModal" class="modal donate-modal">
-            <div class="modal-content donate-modal-content">
-                <span id="closeDonateModal" class="close">×</span>
-                <div class="donate-info">
-                    <img src="img/scanMe.png" alt="QR Code">
-                    <p>NGUYEN TRONG DUC</p>
-                    <p>BIDV - 8830619257</p>
-                    <a href="https://www.buymeacoffee.com/duckcitvn" target="_blank" class="coffee-button">
-                        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 160px !important; margin-top: 5px;">
-                    </a>
+        <!-- New Donate Modal -->
+        <div id="donateModal" class="donate-modal-overlay">
+            <div class="donate-modal-content">
+                <div class="donate-modal-icon">
+                    <img src="img/ic-scan.png" alt="Scan Icon" />
                 </div>
+                <h2>Scan QR code</h2>
+                <p>Scan QR code to donate</p>
+                <div class="donate-qr">
+                    <img src="img/qrcode.png" alt="QR Code" />
+                </div>
+                <div class="donate-instruction">or enter account number</div>
+                <div class="donate-code-container">
+                    <div class="donate-bank-info">
+                        <img src="img/bidv.png" alt="Bank Icon" />
+                        <span id="donateBankNumber">8830619257</span>
+                    </div>
+                    <div class="donate-action-icon" onclick="copyBankNumber(this)">
+                        <i class="fa-regular fa-copy"></i>
+                        <span class="donate-tooltip">Copied!</span>
+                    </div>
+                    <div class="donate-action-icon" onclick="window.open('https://www.buymeacoffee.com/duckcitvn', '_blank')">
+                        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="BMC" width="16" height="16" />
+                        <span class="donate-tooltip">Buy me a coffee ☕</span>
+                    </div>
+                </div>
+                <button class="donate-btn-close" onclick="closeDonateModal()">
+                    Close
+                </button>
             </div>
         </div>
 

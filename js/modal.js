@@ -96,20 +96,17 @@ function initModal() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', initModal);
-
 // Donate modal handlers
 function openDonateModal() {
     const modal = document.getElementById("donateModal");
     if (modal) {
-        // Calculate scrollbar width
         const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
         document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
         
         modal.style.display = "flex";
         document.body.classList.add('modal-open');
         setTimeout(() => {
-            modal.classList.add("active");
+            modal.classList.add('active');
         }, 10);
     }
 }
@@ -117,7 +114,7 @@ function openDonateModal() {
 function closeDonateModal() {
     const modal = document.getElementById("donateModal");
     if (modal) {
-        modal.classList.remove("active");
+        modal.classList.remove('active');
         setTimeout(() => {
             modal.style.display = "none";
             document.body.classList.remove('modal-open');
@@ -126,30 +123,31 @@ function closeDonateModal() {
     }
 }
 
+function copyBankNumber(icon) {
+    const text = document.getElementById("donateBankNumber").textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        icon.classList.add("show-tooltip");
+        setTimeout(() => {
+            icon.classList.remove("show-tooltip");
+        }, 1500);
+    });
+}
+
 // Initialize donate modal
 function initDonateModal() {
     const donateLink = document.getElementById("donate");
-    const closeDonateModalBtn = document.getElementById("closeDonateModal");
     const donateModal = document.getElementById("donateModal");
 
-    if (!donateLink || !closeDonateModalBtn || !donateModal) return;
+    if (!donateLink || !donateModal) return;
 
     donateLink.addEventListener("click", function(e) {
         e.preventDefault();
         openDonateModal();
     });
 
-    closeDonateModalBtn.addEventListener("click", function() {
-        closeDonateModal();
-    });
-
-    donateModal.addEventListener("click", function(e) {
-        if (e.target === this) {
-            closeDonateModal();
-        }
-    });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    initModal();
     initDonateModal();
 });
