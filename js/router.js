@@ -17,18 +17,17 @@ class Router {
 
         document.addEventListener('click', (e) => {
             if (e.target.matches('a') && !e.target.matches('.footer-icons a')) {
-                e.preventDefault();
                 const href = e.target.getAttribute('href');
                 if (href && this.routes[href]) {
-                    // Kiểm tra nếu đang ở trang hiện tại
+                    e.preventDefault();
                     if (href === window.location.pathname) {
-                        window.scrollTo({ top: 0, behavior: 'smooth' }); // Cuộn lên đầu
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
                         this.navigate(href);
                     }
                 }
             }
-        });
+        });        
 
         this.handleInitialLoad();
         this.cleanUrl();
