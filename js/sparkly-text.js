@@ -1,4 +1,7 @@
-// Sparkly text animation setup
+/*************************************************
+* DUCK CIT - Sparkly text animation setup
+*************************************************/
+
 let sheet;
 let sparkleTemplate;
 

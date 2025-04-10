@@ -411,7 +411,7 @@ body.modal-open {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     color: #aaa;
 }
@@ -1054,17 +1054,19 @@ footer p {
     }
 
     .modal-content {
-        width: 90%;
-        max-width: 300px;
+        margin: 0 20px;
     }
 
     .modal-content h2 {
         font-size: 18px;
     }
 
+    .modal-content button {
+        font-size: 14px;
+    }
+
     .donate-modal-content {
-        width: 90%;
-        max-width: 300px;
+        margin: 0 20px;
     }
 
     .notification {
@@ -1077,6 +1079,10 @@ footer p {
     .loading {
         margin-top: 75px;
         font-size: 12px;
+    }
+    
+    .projects-container {
+        padding: 0;
     }
 
     .projects-grid {
@@ -1189,6 +1195,7 @@ footer p {
     width: 30px;
     height: 30px;
     opacity: 0;
+    pointer-events: none;
 }
 
 .dragging-emoji {

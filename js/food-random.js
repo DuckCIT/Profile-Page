@@ -1,3 +1,7 @@
+/*************************************************
+* DUCK CIT - Food random animation setup
+*************************************************/
+
 function initFoodRandom() {
     const foodEmojis = [
         "🍕", "🍔", "🍟", "🌭", "🍿", "🥟", "🍜", "🍗",
@@ -194,7 +198,7 @@ function initFoodRandom() {
 
         if (!isRestored) {
             bubble.style.visibility = 'hidden';
-            const delay = 1000 + Math.random() * 2000;
+            const delay = 2000 + Math.random() * 2000;
             setTimeout(() => {
                 updateEmoji();
                 intervalId = window.foodRandomInterval = setInterval(updateEmoji, 60 * 1000);

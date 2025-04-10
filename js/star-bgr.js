@@ -1,4 +1,7 @@
-// Star background animation setup
+/*************************************************
+* DUCK CIT - Star background animation setup
+*************************************************/
+
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 const stars = [];
