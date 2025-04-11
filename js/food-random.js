@@ -86,6 +86,9 @@ function initFoodRandom() {
             e.preventDefault();
             isDragging = true;
     
+            // Ẩn emoji trong note-bubble
+            emojiSpan.style.visibility = 'hidden';
+    
             dragElement = document.createElement('div');
             dragElement.className = 'dragging-emoji';
             dragElement.textContent = emojiSpan.textContent;
@@ -98,7 +101,6 @@ function initFoodRandom() {
     
         document.addEventListener('mousemove', (e) => {
             if (isDragging && dragElement) {
-                // Tính toán vị trí với độ lệch cuộn
                 dragElement.style.left = `${e.clientX + window.scrollX - 10}px`;
                 dragElement.style.top = `${e.clientY + window.scrollY - 10}px`;
             }
@@ -124,6 +126,8 @@ function initFoodRandom() {
                         capooImage.src = 'img/capoo-full.webp';
                         window.stopFoodRandom();
                     }
+                } else {
+                    emojiSpan.style.visibility = 'visible';
                 }
     
                 document.body.removeChild(dragElement);
@@ -134,6 +138,8 @@ function initFoodRandom() {
         emojiSpan.addEventListener('touchstart', (e) => {
             e.preventDefault();
             isDragging = true;
+    
+            emojiSpan.style.visibility = 'hidden';
     
             dragElement = document.createElement('div');
             dragElement.className = 'dragging-emoji';
@@ -149,7 +155,6 @@ function initFoodRandom() {
         document.addEventListener('touchmove', (e) => {
             if (isDragging && dragElement) {
                 const touch = e.touches[0];
-                // Tính toán vị trí với độ lệch cuộn
                 dragElement.style.left = `${touch.clientX + window.scrollX - 10}px`;
                 dragElement.style.top = `${touch.clientY + window.scrollY - 10}px`;
             }
@@ -176,6 +181,9 @@ function initFoodRandom() {
                         capooImage.src = 'img/capoo-full.webp';
                         window.stopFoodRandom();
                     }
+                } else {
+                    
+                    emojiSpan.style.visibility = 'visible';
                 }
     
                 document.body.removeChild(dragElement);
