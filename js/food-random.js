@@ -76,41 +76,42 @@ function initFoodRandom() {
         const emojiSpan = document.querySelector('.emoji');
         const dropZone = document.querySelector('#dropZone');
         const capooImage = document.querySelector('#capooImage');
-
+    
         if (!bubble || !emojiSpan || !dropZone || !capooImage) return;
-
+    
         let isDragging = false;
         let dragElement = null;
-
+    
         emojiSpan.addEventListener('mousedown', (e) => {
             e.preventDefault();
             isDragging = true;
-
+    
             dragElement = document.createElement('div');
             dragElement.className = 'dragging-emoji';
             dragElement.textContent = emojiSpan.textContent;
             document.body.appendChild(dragElement);
-
+    
             const rect = emojiSpan.getBoundingClientRect();
-            dragElement.style.left = `${rect.left}px`;
-            dragElement.style.top = `${rect.top}px`;
+            dragElement.style.left = `${rect.left + window.scrollX}px`;
+            dragElement.style.top = `${rect.top + window.scrollY}px`;
         });
-
+    
         document.addEventListener('mousemove', (e) => {
             if (isDragging && dragElement) {
-                dragElement.style.left = `${e.clientX - 10}px`;
-                dragElement.style.top = `${e.clientY - 10}px`;
+                // Tính toán vị trí với độ lệch cuộn
+                dragElement.style.left = `${e.clientX + window.scrollX - 10}px`;
+                dragElement.style.top = `${e.clientY + window.scrollY - 10}px`;
             }
         });
-
+    
         document.addEventListener('mouseup', (e) => {
             if (isDragging && dragElement) {
                 isDragging = false;
-
+    
                 const dropRect = dropZone.getBoundingClientRect();
                 const dropX = e.clientX;
                 const dropY = e.clientY;
-
+    
                 if (
                     dropX >= dropRect.left &&
                     dropX <= dropRect.right &&
@@ -118,52 +119,51 @@ function initFoodRandom() {
                     dropY <= dropRect.bottom
                 ) {
                     const draggedContent = dragElement.textContent;
-                    // Kiểm tra xem nội dung kéo có trong foodEmojis không
                     if (foodEmojis.includes(draggedContent)) {
                         bubble.style.visibility = 'hidden';
-                        // emojiSpan.textContent = '❤️'; // Comment nếu không dùng
                         capooImage.src = 'img/capoo-full.webp';
                         window.stopFoodRandom();
                     }
                 }
-
+    
                 document.body.removeChild(dragElement);
                 dragElement = null;
             }
         });
-
+    
         emojiSpan.addEventListener('touchstart', (e) => {
             e.preventDefault();
             isDragging = true;
-
+    
             dragElement = document.createElement('div');
             dragElement.className = 'dragging-emoji';
             dragElement.textContent = emojiSpan.textContent;
             document.body.appendChild(dragElement);
-
+    
             const touch = e.touches[0];
             const rect = emojiSpan.getBoundingClientRect();
-            dragElement.style.left = `${rect.left}px`;
-            dragElement.style.top = `${rect.top}px`;
+            dragElement.style.left = `${rect.left + window.scrollX}px`;
+            dragElement.style.top = `${rect.top + window.scrollY}px`;
         });
-
+    
         document.addEventListener('touchmove', (e) => {
             if (isDragging && dragElement) {
                 const touch = e.touches[0];
-                dragElement.style.left = `${touch.clientX - 10}px`;
-                dragElement.style.top = `${touch.clientY - 10}px`;
+                // Tính toán vị trí với độ lệch cuộn
+                dragElement.style.left = `${touch.clientX + window.scrollX - 10}px`;
+                dragElement.style.top = `${touch.clientY + window.scrollY - 10}px`;
             }
         });
-
+    
         document.addEventListener('touchend', (e) => {
             if (isDragging && dragElement) {
                 isDragging = false;
-
+    
                 const touch = e.changedTouches[0];
                 const dropRect = dropZone.getBoundingClientRect();
                 const dropX = touch.clientX;
                 const dropY = touch.clientY;
-
+    
                 if (
                     dropX >= dropRect.left &&
                     dropX <= dropRect.right &&
@@ -171,15 +171,13 @@ function initFoodRandom() {
                     dropY <= dropRect.bottom
                 ) {
                     const draggedContent = dragElement.textContent;
-                    // Kiểm tra xem nội dung kéo có trong foodEmojis không
                     if (foodEmojis.includes(draggedContent)) {
                         bubble.style.visibility = 'hidden';
-                        // emojiSpan.textContent = '❤️'; // Comment nếu không dùng
                         capooImage.src = 'img/capoo-full.webp';
                         window.stopFoodRandom();
                     }
                 }
-
+    
                 document.body.removeChild(dragElement);
                 dragElement = null;
             }
